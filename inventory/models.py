@@ -1,10 +1,16 @@
 from django.db import models
+from datetime import datetime
+from django.urls import reverse
 
 ## Menu Items
 class MenuItems(models.Model):
   ## Define attributes here
   title = models.CharField(max_length=100, unique=True)
   price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+
+  """Method to define the URL to redirect after creating a new menu item"""
+  def get_absolute_url(self):
+    return reverse('menu_items')
 
   """Magic method to define string representation of the model"""
   def __str__(self):
@@ -48,7 +54,7 @@ class RecipeRequirements(models.Model):
 class Purchases(models.Model):
   ## Define attributes here
   menu_item = models.ForeignKey(MenuItems, on_delete=models.CASCADE)
-  timestamp = models.DateTimeField(auto_now_add=True)
+  timestamp = models.DateTimeField(auto_now_add=False, default=datetime.now())
 
   """Magic method to define string representation of the model"""
   def __str__(self):

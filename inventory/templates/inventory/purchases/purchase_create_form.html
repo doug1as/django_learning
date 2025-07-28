@@ -2,22 +2,17 @@
 
 {% block content %}
 <h2>Menu List</h2>
-<a href="{% url 'menu_create'%}"><button class="btn">Add Menu Item</button></a>
 <table>
   <tr>
     <th>Id</th>
     <th>Title</th>
     <th>Price</th>
-    <th>Update</th>
-    <th>Delete</th>
   </tr> 
   {% for item in menu_items %}
   <tr>
       <td>{{ item.id }}</td>
       <td>{{ item.title }}</td>
       <td>{{ item.price }}</td>
-      <td><a href="{% url 'menu_item_update' item.id %}">Edit</a></td>
-      <td><a href="{% url 'menu_item_delete' item.id %}">Delete</a></td>
   </tr>
   {% endfor %}
 </table>

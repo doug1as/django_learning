@@ -1,0 +1,27 @@
+{% extends "inventory/base.html" %}
+
+{% block content %}
+<h2>Recipe Requirements</h2>
+<a href="{% url 'recipe_requirements_create'%}"><button class="btn">Add Receipe Requirement</button></a>
+{% for recipe in grouped_recipes %}
+<h3>{{ recipe.menu_item.title }}</h3>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Ingredient</th>
+    <th>Quantity</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr> 
+  {% for requirement in recipe.ingredients %}
+  <tr>
+      <td>{{ requirement.id }}</td>
+      <td>{{ requirement.ingredient.name }}</td>
+      <td>{{ requirement.quantity }}</td>
+      <td><a href="{% url 'recipe_requirements_update' requirement.id %}">Edit</a></td>
+      <td><a href="{% url 'recipe_requirements_delete' requirement.id %}">Delete</a></td>
+  </tr>
+  {% endfor %}
+  </table>
+{% endfor %}
+{% endblock %}

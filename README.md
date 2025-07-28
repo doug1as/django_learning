@@ -73,7 +73,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Access the app at [http://localhost:8000](http://localhost:8000)
+Access the app at [http://localhost:8000/inventory](http://localhost:8000/inventory)
 
 ---
 

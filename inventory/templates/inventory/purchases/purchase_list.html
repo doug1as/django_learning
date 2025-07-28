@@ -2,21 +2,23 @@
 
 {% block content %}
 <h2>Purchase List</h2>
+<a href="{% url 'purchases_create'%}"><button class="btn">Add Purchase</button></a>
 <table>
   <tr>
     <th>Id</th>
     <th>Menu Item</th>
     <th>Time</th>
+    <th>Update</th>
+    <th>Delete</th>
   </tr> 
-	<tr>
   {% for purchase in purchases %}
-  </tr>
   <tr>
       <td>{{ purchase.id }}</td>
       <td>{{ purchase.menu_item.title }}</td>
       <td>{{ purchase.timestamp }}</td>
+      <td><a href="{% url 'purchases_update' purchase.id %}">Edit</a></td>
+      <td><a href="{% url 'purchases_delete' purchase.id %}">Delete</a></td>
   </tr>
   {% endfor %}
-  </tr>
 </table>
 {% endblock %}

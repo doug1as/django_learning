@@ -1,24 +1,22 @@
 {% extends "inventory/base.html" %}
 
 {% block content %}
-<h2>Receipe Requirements</h2>
+<h2>Recipe Requirements</h2>
+{% for recipe in grouped_recipes %}
+<h3>{{ recipe.menu_item.title }}</h3>
 <table>
   <tr>
     <th>Id</th>
-    <th>Menu Item</th>
     <th>Ingredient</th>
     <th>Quantity</th>
   </tr> 
-	<tr>
-  {% for requirement in recipe_requirements %}
-  </tr>
+  {% for requirement in recipe.ingredients %}
   <tr>
       <td>{{ requirement.id }}</td>
-      <td>{{ requirement.menu_item.title }}</td>
       <td>{{ requirement.ingredient.name }}</td>
       <td>{{ requirement.quantity }}</td>
   </tr>
   {% endfor %}
-  </tr>
-</table>
+  </table>
+{% endfor %}
 {% endblock %}
